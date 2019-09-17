@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EcomLocatorV2.Interfaces
 {
-    public interface IUser
+    public interface IUserService
     {
         Task<List<User>> GetUsers() ;
     }
