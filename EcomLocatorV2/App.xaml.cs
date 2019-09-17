@@ -4,6 +4,8 @@ using EcomLocatorV2.ViewModels;
 using EcomLocatorV2.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using EcomLocatorV2.Interfaces;
+using EcomLocatorV2.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EcomLocatorV2
@@ -23,13 +25,15 @@ namespace EcomLocatorV2
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            //await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("UsersPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<UsersPage, UsersPageViewModel>();
+            containerRegistry.RegisterSingleton<IUser, UsersListApi>();
         }
     }
 }
