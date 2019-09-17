@@ -14,10 +14,10 @@
             </SearchBar.Behaviors>
         </SearchBar>
 
-        <ListView ItemsSource="{Binding FilteredUsers}">
+        <ListView ItemsSource="{Binding FilteredUsers}" SelectedItem="{Binding SelectedUser}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding FirstName}" Detail="{Binding LastName}"></TextCell>
+                    <TextCell Text="{Binding FirstName}" TextColor="Blue" Detail="{Binding LastName}" DetailColor="Indigo"></TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
