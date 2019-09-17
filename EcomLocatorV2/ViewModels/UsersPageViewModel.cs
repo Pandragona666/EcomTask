@@ -8,6 +8,7 @@ using EcomLocatorV2.Model;
 using EcomLocatorV2.Interfaces;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Prism.Navigation;
 
 namespace EcomLocatorV2.ViewModels
 {
@@ -15,8 +16,8 @@ namespace EcomLocatorV2.ViewModels
     {
         public ObservableCollection<User> Users { get; set; }
         public ObservableCollection<User> FilteredUsers { get; set; }
+        public INavigationService NavigationService { get; set; }
         private IUserService _userService;
-        private string _searchText;
         private ICommand _searchCommand;
 
         [Obsolete]
@@ -33,7 +34,10 @@ namespace EcomLocatorV2.ViewModels
                     else
                     {
                         FilteredUsers = new ObservableCollection<User>(Users
-                                                .Where(w => w.FirstName.ToLower().Contains(text.ToLower()) || w.LastName.ToLower().Contains(text.ToLower()))
+                                                .Where(w => w.FirstName.ToLower()
+                                                .Contains(text.ToLower()) 
+                                                || w.LastName.ToLower()
+                                                .Contains(text.ToLower()))
                                                 .ToList());
                     }
                     RaisePropertyChanged("FilteredUsers");
@@ -41,20 +45,13 @@ namespace EcomLocatorV2.ViewModels
             }
         }
 
-        public string SearchText
-        {
-            get { return _searchText; }
-            set { _searchText = value; }
-        }
-
-
-
-        public UsersPageViewModel(IUserService users)
+        public UsersPageViewModel(IUserService users, INavigationService navigationService)
         {
             Users = new ObservableCollection<User>();
             _userService = users;
             LoadUsers();
             FilteredUsers = Users;
+            NavigationService = navigationService;
         }
 
         private async void LoadUsers()
@@ -65,5 +62,23 @@ namespace EcomLocatorV2.ViewModels
                 Users.Add(user);
             }
         }
+
+        private User _selectedUser;
+
+        public User SelectedUser
+        {
+            get { return _selectedUser; }
+            set
+            {
+                _selectedUser = value;
+                if (_selectedUser != null)
+                {
+                    var navigationParamaters = new NavigationParameters();
+                    navigationParamaters.Add("userdetail", _selectedUser);
+                    NavigationService.NavigateAsync("UserDetail", navigationParamaters);
+                }
+            }
+        }
+
     }
 }

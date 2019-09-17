@@ -26,7 +26,7 @@ namespace EcomLocatorV2
             InitializeComponent();
 
             //await NavigationService.NavigateAsync("NavigationPage/MainPage");
-            await NavigationService.NavigateAsync("UsersPage");
+            await NavigationService.NavigateAsync("NavigationPage/UsersPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -34,6 +34,7 @@ namespace EcomLocatorV2
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<UsersPage, UsersPageViewModel>();
             containerRegistry.RegisterSingleton<IUserService, UsersListApi>();
+            containerRegistry.RegisterForNavigation<UserDetail, UserDetailViewModel>();
         }
     }
 }
