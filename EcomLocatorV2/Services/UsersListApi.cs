@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace EcomLocatorV2.Services
 {
-    public class UsersListApi : IUser
+    public class UsersListApi : IUserService
     {
         public async Task<List<User>> GetUsers()
         {
