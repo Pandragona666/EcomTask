@@ -17,7 +17,17 @@
         <ListView ItemsSource="{Binding FilteredUsers}" SelectedItem="{Binding SelectedUser}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding FirstName}" TextColor="Blue" Detail="{Binding LastName}" DetailColor="Indigo"></TextCell>
+                    <ViewCell>
+                        <ContentView>
+                            <StackLayout Padding="20, 10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding FirstName}" TextColor="Indigo" FontSize="15" FontAttributes="Bold"/>
+                                    <Label Text="{Binding LastName}" TextColor="Indigo" FontSize="15" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ContentView>
+                    </ViewCell>
+                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
