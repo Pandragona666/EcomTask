@@ -33,8 +33,9 @@ namespace EcomLocatorV2
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<UsersPage, UsersPageViewModel>();
-            containerRegistry.RegisterSingleton<IUserService, UsersListApi>();
             containerRegistry.RegisterForNavigation<UserDetail, UserDetailViewModel>();
+            containerRegistry.RegisterSingleton<IUserService, UsersListApi>();
+            containerRegistry.RegisterSingleton<IUserDetailsService, UserDetailsApi>();
         }
     }
 }
