@@ -1,4 +1,5 @@
-﻿using EcomLocatorV2.Model;
+﻿using EcomLocatorV2.Interfaces;
+using EcomLocatorV2.Model;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -10,26 +11,23 @@ namespace EcomLocatorV2.ViewModels
 {
     public class UserDetailViewModel : BindableBase, INavigatedAware
     {
-        private User user;
-        private string _userFirstName;
+        private User _user;
 
-        public string UserFirstName
+        public User User
         {
-            get { return _userFirstName; }
-            set { SetProperty(ref _userFirstName , value); }
+            get { return _user; }
+            set { _user = value;
+                RaisePropertyChanged("User");
+            }
         }
 
-        private string _userLastName;
 
-        public string UserLastName
+        private int _userId;
+        private IUserDetailsService _userDetailsService;
+
+        public UserDetailViewModel(IUserDetailsService userDetailsService)
         {
-            get { return _userLastName; }
-            set { SetProperty(ref _userLastName , value); }
-        }
-
-        public UserDetailViewModel()
-        {
-
+            _userDetailsService = userDetailsService;
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
@@ -37,11 +35,11 @@ namespace EcomLocatorV2.ViewModels
             throw new NotImplementedException();
         }
 
-        public void OnNavigatedTo(INavigationParameters parameters)
+        public async void OnNavigatedTo(INavigationParameters parameters)
         {
-            user = (User)parameters["userdetail"];
-            UserFirstName = user.FirstName;
-            UserLastName = user.LastName;
+            User = (User)parameters["userdetail"];
+            _userId= _user.Id;
+            User = await _userDetailsService.GetUserDetails(_userId);
         }
     }
 }

@@ -4,7 +4,8 @@
              xmlns:prism="http://prismlibrary.com"
              xmlns:helpers="clr-namespace:EcomLocatorV2.Helpers"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="EcomLocatorV2.Views.UsersPage">
+             x:Class="EcomLocatorV2.Views.UsersPage"
+             NavigationPage.HasNavigationBar="false">
 
     <StackLayout>
 
@@ -27,7 +28,6 @@
                             </StackLayout>
                         </ContentView>
                     </ViewCell>
-                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
