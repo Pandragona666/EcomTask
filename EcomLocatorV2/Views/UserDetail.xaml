@@ -5,13 +5,46 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EcomLocatorV2.Views.UserDetail">
 
-    <StackLayout>
-        <StackLayout Padding="20">
-            <Label Text="{Binding UserDetails.FirstName}" FontSize="15" FontAttributes="Bold"/>
-            <Label Text="{Binding UserDetails.LastName}"  FontSize="15" FontAttributes="Bold"/>
-            <Label Text="{Binding UserDetails.Age}" FontSize="15" FontAttributes="Bold"/>
-            <Label Text="{Binding UserDetails.City}" FontSize="15" FontAttributes="Bold"/>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+        </Grid.RowDefinitions>
+
+        <BoxView Grid.Row="0"/>
+        <Image Source="HeaderBackground.png" Aspect="AspectFill"/>
+        <Grid Grid.Row="1" BackgroundColor="#EFE9F4" Padding="0,75,0,25">
+            <Label Text="User Details" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        </Grid>
+        <StackLayout Grid.Row="2" Padding="20,10">
+            <Label Text="First name"/>
+            <Label Text="{Binding UserDetails.FirstName}" TextColor="#171D1C" FontSize="15" FontAttributes="Bold"/>
+            <Label Text="Last name"/>
+            <Label Text="{Binding UserDetails.LastName}" TextColor="#171D1C" FontSize="15" FontAttributes="Bold"/>
         </StackLayout>
-    </StackLayout>
+        <Grid Grid.Row="3">
+            <StackLayout Padding="20,10">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="birthday.png" WidthRequest="25" HeightRequest="25" />
+                    <Label Text="{Binding UserDetails.Age}" TextColor="#171D1C" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="End"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="flag.png" WidthRequest="25" HeightRequest="25" />
+                    <Label Text="{Binding UserDetails.City}" TextColor="#171D1C" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="End"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+
+        <Image 
+            Source="profilePicturePlaceholder.png"  
+            HorizontalOptions="Center" 
+            WidthRequest="100" 
+            HeightRequest="100" 
+            VerticalOptions="End" 
+            TranslationY="50"/>
+    </Grid>
+    
     
 </ContentPage>
