@@ -7,6 +7,6 @@ namespace EcomLocatorV2.Model
     public class WrapperSingle
     {
         public bool IsSuccess { get; set; }
-        public User Data { get; set; }
+        public UserDetails Data { get; set; }
     }
 }

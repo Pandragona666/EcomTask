@@ -6,11 +6,11 @@
              x:Class="EcomLocatorV2.Views.UserDetail">
 
     <StackLayout>
-        <StackLayout>
-            <Label Text="{Binding User.FirstName}" TextColor="Indigo" FontSize="15" FontAttributes="Bold"/>
-            <Label Text="{Binding User.LastName}" TextColor="Indigo" FontSize="15" FontAttributes="Bold"/>
-            <Label Text="{Binding User.Age}" TextColor="Indigo" FontSize="15" FontAttributes="Bold"/>
-            <Label Text="{Binding User.City}" TextColor="Indigo" FontSize="15" FontAttributes="Bold"/>
+        <StackLayout Padding="20">
+            <Label Text="{Binding UserDetails.FirstName}" FontSize="15" FontAttributes="Bold"/>
+            <Label Text="{Binding UserDetails.LastName}"  FontSize="15" FontAttributes="Bold"/>
+            <Label Text="{Binding UserDetails.Age}" FontSize="15" FontAttributes="Bold"/>
+            <Label Text="{Binding UserDetails.City}" FontSize="15" FontAttributes="Bold"/>
         </StackLayout>
     </StackLayout>
     
