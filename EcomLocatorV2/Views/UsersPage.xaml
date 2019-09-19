@@ -7,6 +7,28 @@
              x:Class="EcomLocatorV2.Views.UsersPage"
              NavigationPage.HasNavigationBar="false">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="evenTemplate">
+                <ViewCell>
+                    <Grid BackgroundColor="White">
+                        <Label Text="{Binding .}" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="unevenTemplate">
+                <ViewCell>
+                    <Grid BackgroundColor="LightGray">
+                        <Label Text="{Binding .}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <helpers:AlternateColorDataTemplateSelector x:Key="alternateColorDataTemplateSelector"
+                EvenTemplate="{StaticResource evenTemplate}"
+                UnevenTemplate="{StaticResource unevenTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <StackLayout>
 
         <SearchBar x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding SearchText, Source={x:Reference SearchBar}}">
@@ -22,8 +44,8 @@
                         <ContentView>
                             <StackLayout Padding="20, 10">
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding FirstName}" TextColor="Indigo" FontSize="15" FontAttributes="Bold"/>
-                                    <Label Text="{Binding LastName}" TextColor="Indigo" FontSize="15" FontAttributes="Bold"/>
+                                    <Label Text="{Binding FirstName}" FontSize="15" FontAttributes="Bold"/>
+                                    <Label Text="{Binding LastName}" FontSize="15" FontAttributes="Bold"/>
                                 </StackLayout>
                             </StackLayout>
                         </ContentView>

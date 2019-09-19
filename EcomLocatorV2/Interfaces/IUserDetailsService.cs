@@ -8,7 +8,7 @@ namespace EcomLocatorV2.Interfaces
 {
     public interface IUserDetailsService
     {
-        Task<User> GetUserDetails(int UserId);
+        Task<UserDetails> GetUserDetails(int UserId);
 
     }
 }

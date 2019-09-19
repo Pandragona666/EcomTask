@@ -13,7 +13,7 @@ namespace EcomLocatorV2.Services
     {
         private const string SERVER_NAME = "https://internshiptaskuserslist.azurewebsites.net/api/users/";
         private const string KEY = "code=9XuCxWZqJavOAWHPcWD/97mMeJkK0mSVMA9A6MQ9n4R1B/6fpsxGqw==";
-        public async Task<User> GetUserDetails(int userId)
+        public async Task<UserDetails> GetUserDetails(int userId)
         {
             var httpClient = new HttpClient();
             string fullQueryAddress = $"{SERVER_NAME}{userId}?{KEY}";

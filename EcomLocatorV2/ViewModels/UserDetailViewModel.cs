@@ -16,12 +16,19 @@ namespace EcomLocatorV2.ViewModels
         public User User
         {
             get { return _user; }
-            set { _user = value;
-                RaisePropertyChanged("User");
-            }
+            set { _user = value; }
         }
 
+        private UserDetails _userDetails;
 
+        public UserDetails UserDetails
+        {
+            get { return _userDetails; }
+            set {_userDetails = value;
+                RaisePropertyChanged("UserDetails");
+            }
+        }
+        
         private int _userId;
         private IUserDetailsService _userDetailsService;
 
@@ -39,7 +46,7 @@ namespace EcomLocatorV2.ViewModels
         {
             User = (User)parameters["userdetail"];
             _userId= _user.Id;
-            User = await _userDetailsService.GetUserDetails(_userId);
+            UserDetails = await _userDetailsService.GetUserDetails(_userId);
         }
     }
 }
