@@ -15,7 +15,14 @@ namespace EcomLocatorV2.ViewModels
     public class UsersPageViewModel : BindableBase
     {
         public ObservableCollection<User> Users { get; set; }
-        public ObservableCollection<User> FilteredUsers { get; set; }
+        private ObservableCollection<User> _filteredUsers;
+        public ObservableCollection<User> FilteredUsers
+        { get { return _filteredUsers; }
+            set { _filteredUsers = value;
+                RaisePropertyChanged("FilteredUsers");
+            }
+        }
+
         public INavigationService NavigationService { get; set; }
         private IUserService _userService;
         private ICommand _searchCommand;
@@ -50,7 +57,6 @@ namespace EcomLocatorV2.ViewModels
             Users = new ObservableCollection<User>();
             _userService = users;
             LoadUsers();
-            FilteredUsers = Users;
             NavigationService = navigationService;
         }
 
@@ -61,6 +67,8 @@ namespace EcomLocatorV2.ViewModels
             {
                 Users.Add(user);
             }
+
+            FilteredUsers = new ObservableCollection<User>(Users.OrderBy(person => person.FirstName));
         }
 
         private User _selectedUser;
