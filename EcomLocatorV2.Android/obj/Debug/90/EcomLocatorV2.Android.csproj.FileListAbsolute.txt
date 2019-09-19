@@ -455,3 +455,8 @@ C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\sta
 C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\drawable\background.jpg
+C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\drawable\birthday.png
+C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\drawable\flag.png
+C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\drawable\profilepictureplaceholder.png
+C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\drawable\headerbackground.png
