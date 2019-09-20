@@ -7435,6 +7435,9 @@ namespace EcomLocatorV2.Droid
 			// aapt resource value: 0x7F0C0000
 			public const int ic_launcher = 2131492864;
 			
+			// aapt resource value: 0x7F0C0001
+			public const int unicornIcon = 2131492865;
+			
 			static Mipmap()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
