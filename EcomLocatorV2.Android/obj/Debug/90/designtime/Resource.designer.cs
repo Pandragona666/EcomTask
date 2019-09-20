@@ -6263,6 +6263,9 @@ namespace EcomLocatorV2.Droid
 			// aapt resource value: 0x7F070139
 			public const int tooltip_frame_light = 2131165497;
 			
+			// aapt resource value: 0x7F07013A
+			public const int unicornIcon = 2131165498;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

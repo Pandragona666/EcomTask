@@ -460,3 +460,5 @@ C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res
 C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\drawable\flag.png
 C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\drawable\profilepictureplaceholder.png
 C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\drawable\headerbackground.png
+C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\drawable\unicornicon.png
+C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\drawable-xhdpi\unicornicon.png
