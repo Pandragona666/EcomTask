@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <BoxView Grid.Row="0"/>
-        <Image Source="HeaderBackground.png" Aspect="AspectFill"/>
+        <Image Source="HeaderBackground.png" Aspect="AspectFill" />
         <Grid Grid.Row="1" BackgroundColor="#EFE9F4" Padding="0,75,0,25">
             <Label Text="User Details" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
         </Grid>
