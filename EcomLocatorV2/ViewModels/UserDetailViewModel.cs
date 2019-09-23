@@ -12,7 +12,6 @@ namespace EcomLocatorV2.ViewModels
     public class UserDetailViewModel : BindableBase, INavigatedAware
     {
         private User _user;
-
         public User User
         {
             get { return _user; }
@@ -20,7 +19,6 @@ namespace EcomLocatorV2.ViewModels
         }
 
         private UserDetails _userDetails;
-
         public UserDetails UserDetails
         {
             get { return _userDetails; }
@@ -28,13 +26,21 @@ namespace EcomLocatorV2.ViewModels
                 RaisePropertyChanged("UserDetails");
             }
         }
-        
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set { _isBusy = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private int _userId;
         private IUserDetailsService _userDetailsService;
 
         public UserDetailViewModel(IUserDetailsService userDetailsService)
-        {
-            _userDetailsService = userDetailsService;
+        {            
+            _userDetailsService = userDetailsService;          
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
@@ -44,9 +50,11 @@ namespace EcomLocatorV2.ViewModels
 
         public async void OnNavigatedTo(INavigationParameters parameters)
         {
+            IsBusy = true;
             User = (User)parameters["userdetail"];
             _userId= _user.Id;
             UserDetails = await _userDetailsService.GetUserDetails(_userId);
+            IsBusy = false;
         }
     }
 }

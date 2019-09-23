@@ -7,28 +7,6 @@
              x:Class="EcomLocatorV2.Views.UsersPage"
              NavigationPage.HasNavigationBar="false">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <DataTemplate x:Key="evenTemplate">
-                <ViewCell>
-                    <Grid BackgroundColor="White">
-                        <Label Text="{Binding .}" HorizontalOptions="Center" VerticalOptions="Center" />
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-            <DataTemplate x:Key="unevenTemplate">
-                <ViewCell>
-                    <Grid BackgroundColor="LightGray">
-                        <Label Text="{Binding .}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-            <helpers:AlternateColorDataTemplateSelector x:Key="alternateColorDataTemplateSelector"
-                EvenTemplate="{StaticResource evenTemplate}"
-                UnevenTemplate="{StaticResource unevenTemplate}" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <StackLayout>
 
         <SearchBar x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding SearchText, Source={x:Reference SearchBar}}">
@@ -36,7 +14,7 @@
                 <helpers:TextChangedBehavior />
             </SearchBar.Behaviors>
         </SearchBar>
-
+        <ActivityIndicator IsRunning="{Binding IsBusy}" Color="DarkRed" IsVisible="{Binding IsBusy}"/>
         <ListView ItemsSource="{Binding FilteredUsers}" SelectedItem="{Binding SelectedUser}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -53,9 +31,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        
     </StackLayout>
-    
-    
-    
 </ContentPage>
