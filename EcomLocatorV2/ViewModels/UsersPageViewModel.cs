@@ -30,7 +30,7 @@ namespace EcomLocatorV2.ViewModels
         {
             get { return _isBusy; }
             set { _isBusy = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged("IsBusy");
             }
         }
 
@@ -38,7 +38,6 @@ namespace EcomLocatorV2.ViewModels
         private IUserService _userService;
         private ICommand _searchCommand;
 
-        [Obsolete]
         public ICommand SearchCommand
         {
             get
@@ -95,28 +94,11 @@ namespace EcomLocatorV2.ViewModels
             IsBusy = false;
         }
 
-        private User _selectedUser;
-
-        public User SelectedUser
-        {
-            get { return _selectedUser; }
-            set
-            {
-                _selectedUser = value;
-                /*if (_selectedUser != null)
-                {
-                    var navigationParamaters = new NavigationParameters();
-                    navigationParamaters.Add("userdetail", _selectedUser);
-                    NavigationService.NavigateAsync("UserDetail", navigationParamaters);
-                }*/
-            }
-        }
-
-        public void OnTapped(object SelectedUser)
+        public void OnTapped(object tappedUser)
         {
             var navigationParamaters = new NavigationParameters();
-            navigationParamaters.Add("userdetail", SelectedUser);
-            NavigationService.NavigateAsync("UderDetail", navigationParamaters);
+            navigationParamaters.Add("userdetail", tappedUser);
+            NavigationService.NavigateAsync("UserDetail", navigationParamaters);
         }
 
     }
