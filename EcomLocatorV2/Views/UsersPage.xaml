@@ -7,7 +7,7 @@
              x:Class="EcomLocatorV2.Views.UsersPage"
              NavigationPage.HasNavigationBar="false">
 
-    <StackLayout>
+    <StackLayout x:Name="UserListPage">
 
         <SearchBar x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding SearchText, Source={x:Reference SearchBar}}">
             <SearchBar.Behaviors>
@@ -16,16 +16,16 @@
         </SearchBar>
         <ActivityIndicator IsRunning="{Binding IsBusy}" Color="DarkRed" IsVisible="{Binding IsBusy}"/>
         <ListView ItemsSource="{Binding FilteredUsers}">
-            <ListView.GestureRecognizers>
-                <TapGestureRecognizer
-                    Command="{Binding TapCommand}"
-                    CommandParameter="{Binding SelectedUser}"/>
-            </ListView.GestureRecognizers>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ContentView>
                             <StackLayout Padding="20, 10">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                      Command="{Binding Path=BindingContext.TapCommand, Source={x:Reference Name=UserListPage}}"
+                                      CommandParameter="{Binding .}"/>
+                                </StackLayout.GestureRecognizers>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding FirstName}" FontSize="15" FontAttributes="Bold"/>
                                     <Label Text="{Binding LastName}" FontSize="15" FontAttributes="Bold"/>
