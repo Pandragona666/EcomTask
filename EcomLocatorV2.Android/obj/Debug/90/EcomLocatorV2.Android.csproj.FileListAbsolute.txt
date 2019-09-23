@@ -467,3 +467,4 @@ C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res
 C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\mipmap-xhdpi\unicornicon.png
 C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\mipmap-xxhdpi\unicornicon.png
 C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\mipmap-xxxhdpi\unicornicon.png
+C:\Users\korda\source\repos\EcomLocatorV2\EcomLocatorV2.Android\obj\Debug\90\res\drawable\background2.jpg

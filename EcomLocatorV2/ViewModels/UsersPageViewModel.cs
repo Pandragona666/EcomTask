@@ -9,6 +9,7 @@ using EcomLocatorV2.Interfaces;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Prism.Navigation;
+using System.Threading.Tasks;
 
 namespace EcomLocatorV2.ViewModels
 {
@@ -23,6 +24,17 @@ namespace EcomLocatorV2.ViewModels
                 RaisePropertyChanged("FilteredUsers");
             }
         }
+
+        private bool _isBusy;
+
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set { _isBusy = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         public INavigationService NavigationService { get; set; }
         private IUserService _userService;
@@ -55,14 +67,17 @@ namespace EcomLocatorV2.ViewModels
 
         public UsersPageViewModel(IUserService users, INavigationService navigationService)
         {
+            NavigationService = navigationService;
             Users = new ObservableCollection<User>();
             _userService = users;
+            
             LoadUsers();
-            NavigationService = navigationService;
+            
         }
 
         private async void LoadUsers()
         {
+            IsBusy = true;
             var users = await _userService.GetUsers();
             foreach (var user in users)
             {
@@ -71,6 +86,7 @@ namespace EcomLocatorV2.ViewModels
             OrderedUsers = new ObservableCollection<User>(Users.OrderBy(person => person.FirstName));
 
             FilteredUsers = OrderedUsers;
+            IsBusy = false;
         }
 
         private User _selectedUser;

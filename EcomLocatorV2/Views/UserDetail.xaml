@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="EcomLocatorV2.Views.UserDetail">
+             x:Class="EcomLocatorV2.Views.UserDetail"
+             Title="User Details">
 
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
@@ -14,11 +15,11 @@
         </Grid.RowDefinitions>
 
         <BoxView Grid.Row="0"/>
-        <Image Source="HeaderBackground.png" Aspect="AspectFill" />
-        <Grid Grid.Row="1" BackgroundColor="#EFE9F4" Padding="0,75,0,25">
-            <Label Text="User Details" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        <Image Source="background2.jpg" Aspect="AspectFill" />
+        <Grid Grid.Row="1" Padding="0,30,0,30">
         </Grid>
         <StackLayout Grid.Row="2" Padding="20,10">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="DarkRed"/>
             <Label Text="First name"/>
             <Label Text="{Binding UserDetails.FirstName}" TextColor="#171D1C" FontSize="15" FontAttributes="Bold"/>
             <Label Text="Last name"/>
@@ -36,6 +37,7 @@
                 </StackLayout>
             </StackLayout>
         </Grid>
+        
 
         <Image 
             Source="profilePicturePlaceholder.png"  
