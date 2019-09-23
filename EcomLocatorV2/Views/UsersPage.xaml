@@ -15,7 +15,12 @@
             </SearchBar.Behaviors>
         </SearchBar>
         <ActivityIndicator IsRunning="{Binding IsBusy}" Color="DarkRed" IsVisible="{Binding IsBusy}"/>
-        <ListView ItemsSource="{Binding FilteredUsers}" SelectedItem="{Binding SelectedUser}">
+        <ListView ItemsSource="{Binding FilteredUsers}">
+            <ListView.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding TapCommand}"
+                    CommandParameter="{Binding SelectedUser}"/>
+            </ListView.GestureRecognizers>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
