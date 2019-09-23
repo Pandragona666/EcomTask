@@ -26,7 +26,6 @@ namespace EcomLocatorV2.ViewModels
         }
 
         private bool _isBusy;
-
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -34,7 +33,6 @@ namespace EcomLocatorV2.ViewModels
                 RaisePropertyChanged();
             }
         }
-
 
         public INavigationService NavigationService { get; set; }
         private IUserService _userService;
@@ -65,14 +63,22 @@ namespace EcomLocatorV2.ViewModels
             }
         }
 
+        private ICommand _tapCommand;
+
+        public ICommand TapCommand
+        {
+            get { return _tapCommand; }
+            set { _tapCommand = value; }
+        }
+
+
         public UsersPageViewModel(IUserService users, INavigationService navigationService)
         {
             NavigationService = navigationService;
             Users = new ObservableCollection<User>();
             _userService = users;
-            
             LoadUsers();
-            
+            TapCommand = new Command(OnTapped);
         }
 
         private async void LoadUsers()
@@ -97,13 +103,20 @@ namespace EcomLocatorV2.ViewModels
             set
             {
                 _selectedUser = value;
-                if (_selectedUser != null)
+                /*if (_selectedUser != null)
                 {
                     var navigationParamaters = new NavigationParameters();
                     navigationParamaters.Add("userdetail", _selectedUser);
                     NavigationService.NavigateAsync("UserDetail", navigationParamaters);
-                }
+                }*/
             }
+        }
+
+        public void OnTapped(object SelectedUser)
+        {
+            var navigationParamaters = new NavigationParameters();
+            navigationParamaters.Add("userdetail", SelectedUser);
+            NavigationService.NavigateAsync("UderDetail", navigationParamaters);
         }
 
     }
