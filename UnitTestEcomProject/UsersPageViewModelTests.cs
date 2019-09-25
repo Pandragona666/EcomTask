@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EcomLocatorV2.Interfaces;
 using EcomLocatorV2.Model;
-using EcomLocatorV2.Services;
 using EcomLocatorV2.ViewModels;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using NUnit.Framework;
 using Prism.Navigation;
@@ -33,6 +29,7 @@ namespace UnitTestEcomProject
             listOfUsers.Add(new User { Id = 6, FirstName = "Noemi", LastName = "Tune" });
             listOfUsers.Add(new User { Id = 7, FirstName = "Tien", LastName = "Gilcrease" });
             listOfUsers.Add(new User { Id = 8, FirstName = "Julianna", LastName = "Kinyon" });
+
             _navigationService = new Mock<INavigationService>();
             mockUsersListApi = new Mock<IUserService>();
             mockUsersListApi.Setup(x => x.GetUsers()).Returns(Task.FromResult(listOfUsers));
@@ -42,11 +39,20 @@ namespace UnitTestEcomProject
         [Test]
         public void testSearchingMethod()
         {
-            //_usersPageViewModel.LoadUsers();
             _usersPageViewModel.SearchCommand.Execute("Juli");
             Assert.IsNotNull(_usersPageViewModel.FilteredUsers);
             Assert.AreEqual(2, _usersPageViewModel.FilteredUsers.Count);
             Assert.IsTrue(_usersPageViewModel.FilteredUsers.Any(user => user.FirstName == "Julianna"));
+        }
+
+        [Test]
+        public void testOrderingMethod()
+        {
+            _usersPageViewModel.OrderUsers();
+            Assert.IsNotNull(_usersPageViewModel.OrderedUsers);
+            Assert.AreEqual(5, _usersPageViewModel.OrderedUsers[0].Id);
+            Assert.AreEqual(8, _usersPageViewModel.OrderedUsers[1].Id);
+            Assert.AreEqual(2, _usersPageViewModel.OrderedUsers[2].Id);
         }
     }
 }
