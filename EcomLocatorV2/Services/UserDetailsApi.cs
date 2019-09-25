@@ -1,10 +1,7 @@
 ﻿using EcomLocatorV2.Interfaces;
 using EcomLocatorV2.Model;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EcomLocatorV2.Services

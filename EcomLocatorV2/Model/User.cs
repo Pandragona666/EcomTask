@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EcomLocatorV2.Model
+﻿namespace EcomLocatorV2.Model
 {
     public class User
     {

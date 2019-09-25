@@ -1,7 +1,4 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
+﻿using Prism.Mvvm;
 using System.Linq;
 using System.Collections.ObjectModel;
 using EcomLocatorV2.Model;
@@ -9,23 +6,20 @@ using EcomLocatorV2.Interfaces;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Prism.Navigation;
-using System.Threading.Tasks;
 
 namespace EcomLocatorV2.ViewModels
 {
     public class UsersPageViewModel : BindableBase
     {
+        private bool _isBusy;
         public ObservableCollection<User> Users { get; set; }
         public ObservableCollection<User> OrderedUsers { get; set; }
         private ObservableCollection<User> _filteredUsers;
-        public ObservableCollection<User> FilteredUsers
-        { get { return _filteredUsers; }
-            set { _filteredUsers = value;
-                RaisePropertyChanged("FilteredUsers");
-            }
-        }
+        public INavigationService NavigationService { get; set; }
+        private IUserService _userService;
+        private ICommand _searchCommand;
+        private ICommand _tapCommand;
 
-        private bool _isBusy;
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -34,10 +28,16 @@ namespace EcomLocatorV2.ViewModels
             }
         }
 
-        public INavigationService NavigationService { get; set; }
-        private IUserService _userService;
-        private ICommand _searchCommand;
-
+        public ObservableCollection<User> FilteredUsers
+        {
+            get { return _filteredUsers; }
+            set
+            {
+                _filteredUsers = value;
+                RaisePropertyChanged("FilteredUsers");
+            }
+        }
+        
         public ICommand SearchCommand
         {
             get
@@ -61,9 +61,7 @@ namespace EcomLocatorV2.ViewModels
                 }));
             }
         }
-
-        private ICommand _tapCommand;
-
+                
         public ICommand TapCommand
         {
             get { return _tapCommand; }
@@ -87,10 +85,16 @@ namespace EcomLocatorV2.ViewModels
             {
                 Users.Add(user);
             }
-            OrderedUsers = new ObservableCollection<User>(Users.OrderBy(person => person.FirstName));
-
+            OrderUsers();         
             FilteredUsers = OrderedUsers;
             IsBusy = false;
+        }
+
+        public void OrderUsers()
+        {
+            OrderedUsers = new ObservableCollection<User>(Users
+                .OrderBy(person => person.FirstName)
+                .ThenBy(person => person.LastName));
         }
 
         public void OnTapped(object tappedUser)
@@ -99,6 +103,5 @@ namespace EcomLocatorV2.ViewModels
             navigationParamaters.Add("userdetail", tappedUser);
             NavigationService.NavigateAsync("UserDetail", navigationParamaters);
         }
-
     }
 }
