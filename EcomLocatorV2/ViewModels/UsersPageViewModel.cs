@@ -69,8 +69,7 @@ namespace EcomLocatorV2.ViewModels
             get { return _tapCommand; }
             set { _tapCommand = value; }
         }
-
-
+        
         public UsersPageViewModel(IUserService users, INavigationService navigationService)
         {
             NavigationService = navigationService;
