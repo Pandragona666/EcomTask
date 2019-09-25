@@ -79,7 +79,7 @@ namespace EcomLocatorV2.ViewModels
             TapCommand = new Command(OnTapped);
         }
 
-        private async void LoadUsers()
+        public async void LoadUsers()
         {
             IsBusy = true;
             var users = await _userService.GetUsers();
