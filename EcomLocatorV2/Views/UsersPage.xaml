@@ -14,7 +14,6 @@
                 <helpers:TextChangedBehavior />
             </SearchBar.Behaviors>
         </SearchBar>
-        <ActivityIndicator IsRunning="{Binding IsBusy}" Color="DarkRed" IsVisible="{Binding IsBusy}"/>
         <ListView ItemsSource="{Binding FilteredUsers}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -36,6 +35,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
+        <ActivityIndicator IsRunning="{Binding IsBusy}" Color="DarkRed" IsVisible="{Binding IsBusy}"/>
     </StackLayout>
 </ContentPage>
