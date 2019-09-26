@@ -28,12 +28,14 @@
                             <StackLayout Padding="20, 10">
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer
-                                      Command="{Binding Path=BindingContext.TapCommand, Source={x:Reference Name=UserListPage}}"
+                                      Command="{Binding Path=BindingContext.TapCommand, 
+                                                        Source={x:Reference 
+                                                        Name=UserListPage}}"
                                       CommandParameter="{Binding .}"/>
                                 </StackLayout.GestureRecognizers>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding FirstName}" FontSize="15" FontAttributes="Bold"/>
-                                    <Label Text="{Binding LastName}" FontSize="15" FontAttributes="Bold"/>
+                                    <Label Text="{Binding FirstName}" Style="{StaticResource label}" />
+                                    <Label Text="{Binding LastName}" Style="{StaticResource label}" />
                                 </StackLayout>
                             </StackLayout>
                         </ContentView>
@@ -42,7 +44,6 @@
             </ListView.ItemTemplate>
         </ListView>
         <ActivityIndicator IsRunning="{Binding IsBusy}" 
-                           Color="DarkRed" 
                            IsVisible="{Binding IsBusy}"
                            AbsoluteLayout.LayoutBounds="0.5, 0.5, 50, 50"
                            AbsoluteLayout.LayoutFlags="PositionProportional"/>
