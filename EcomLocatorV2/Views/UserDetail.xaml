@@ -5,9 +5,16 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EcomLocatorV2.Views.UserDetail"
              Title="User Details">
+
+    <ContentPage.Resources>
+        <Style x:Key="label" TargetType="Label">
+            <Setter Property="TextColor" Value="#171D1C"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+    </ContentPage.Resources>
+
     <ScrollView>
-        
-    
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="AUTO"/>
@@ -22,19 +29,19 @@
         </Grid>
         <StackLayout Grid.Row="2" Padding="20,10">
             <Label Text="First name"/>
-            <Label Text="{Binding UserDetails.FirstName}" TextColor="#171D1C" FontSize="15" FontAttributes="Bold"/>
+            <Label Text="{Binding UserDetails.FirstName}" Style="{StaticResource label}"/>
             <Label Text="Last name"/>
-            <Label Text="{Binding UserDetails.LastName}" TextColor="#171D1C" FontSize="15" FontAttributes="Bold"/>
+            <Label Text="{Binding UserDetails.LastName}" Style="{StaticResource label}"/>
         </StackLayout>
         <Grid Grid.Row="3">
             <StackLayout Padding="20,10">
                 <StackLayout Orientation="Horizontal">
                     <Image Source="birthday.png" WidthRequest="25" HeightRequest="25" />
-                    <Label Text="{Binding UserDetails.Age}" TextColor="#171D1C" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="End"/>
+                    <Label Text="{Binding UserDetails.Age}" Style="{StaticResource label}" VerticalTextAlignment="End"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Image Source="flag.png" WidthRequest="25" HeightRequest="25" />
-                    <Label Text="{Binding UserDetails.City}" TextColor="#171D1C" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="End"/>
+                    <Label Text="{Binding UserDetails.City}" Style="{StaticResource label}" VerticalTextAlignment="End"/>
                 </StackLayout>
             </StackLayout>
             <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="DarkRed"/>
