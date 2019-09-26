@@ -4,8 +4,20 @@
              xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
              x:Class="EcomLocatorV2.App">
 	<Application.Resources>
-
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style x:Key="label" TargetType="Label">
+                <Setter Property="TextColor" Value="#171D1C"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="labelDetail" TargetType="Label" BasedOn="{StaticResource label}">
+                <Setter Property="VerticalTextAlignment" Value="End"/>
+            </Style>
+            <Style TargetType="ActivityIndicator">
+                <Setter Property="Color" Value="DarkRed"/>
+            </Style>
+        </ResourceDictionary>
+		
 
 	</Application.Resources>
 </prism:PrismApplication>
