@@ -5,7 +5,9 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EcomLocatorV2.Views.UserDetail"
              Title="User Details">
-
+    <ScrollView>
+        
+    
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="AUTO"/>
@@ -19,7 +21,6 @@
         <Grid Grid.Row="1" Padding="0,30,0,30">
         </Grid>
         <StackLayout Grid.Row="2" Padding="20,10">
-            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="DarkRed"/>
             <Label Text="First name"/>
             <Label Text="{Binding UserDetails.FirstName}" TextColor="#171D1C" FontSize="15" FontAttributes="Bold"/>
             <Label Text="Last name"/>
@@ -36,9 +37,9 @@
                     <Label Text="{Binding UserDetails.City}" TextColor="#171D1C" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="End"/>
                 </StackLayout>
             </StackLayout>
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="DarkRed"/>
         </Grid>
         
-
         <Image 
             Source="profilePicturePlaceholder.png"  
             HorizontalOptions="Center" 
@@ -47,6 +48,6 @@
             VerticalOptions="End" 
             TranslationY="50"/>
     </Grid>
-    
+    </ScrollView>
     
 </ContentPage>
